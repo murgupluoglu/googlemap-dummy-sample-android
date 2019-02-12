@@ -1,4 +1,4 @@
-# googlemap-dummy-sample-android
+# Google Map V2 Dummy Sample For Android
 
 Get your API_KEY from https://developers.google.com/maps/documentation/android-sdk/signup
 
