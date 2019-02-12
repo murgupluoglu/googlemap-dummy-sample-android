@@ -1,5 +1,4 @@
 # googlemap-dummy-sample-android
-Kotlin with androidX google map v2 sample
 
 Get your API_KEY from https://developers.google.com/maps/documentation/android-sdk/signup
 
