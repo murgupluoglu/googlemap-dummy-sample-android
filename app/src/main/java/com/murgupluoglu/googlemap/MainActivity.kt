@@ -7,12 +7,17 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapsInitializer
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val position = LatLng(-33.920455, 18.466941)
+    val position = LatLng(41.015137, 28.979530)
+
+    var markerOptions = MarkerOptions().position(position)
+
+    lateinit var marker : Marker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +37,13 @@ class MainActivity : AppCompatActivity() {
     private fun setMapLocation(map : GoogleMap) {
         with(map) {
             moveCamera(CameraUpdateFactory.newLatLngZoom(position, 13f))
-            addMarker(MarkerOptions().position(position))
             mapType = GoogleMap.MAP_TYPE_NORMAL
             setOnMapClickListener {
+                if(::marker.isInitialized){
+                    marker.remove()
+                }
+                markerOptions.position(it)
+                marker = addMarker(markerOptions)
                 Toast.makeText(this@MainActivity, "Clicked on ", Toast.LENGTH_SHORT).show()
             }
         }
